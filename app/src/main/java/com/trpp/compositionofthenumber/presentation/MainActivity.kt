@@ -1,4 +1,4 @@
-package com.trpp.compositionofthenumber
+package com.trpp.compositionofthenumber.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
