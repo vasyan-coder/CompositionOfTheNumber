@@ -2,10 +2,11 @@
     <string name="app_name">composition of the number</string>
 
     <string name="start_name">Состав Числа</string>
+    <string name="game_type">Тип игры</string>
     <string name="start_game_button">Начать Игру</string>
     <string name="stats_button">Статистика</string>
-    <string name="summ_button">Сложение</string>
-    <string name="substraction_button">Вычитание</string>
-    <string name="multiply_button">Умножение</string>
-    <string name="division_button">Деление</string>
+    <string name="summ_game_type_button">Сложение</string>
+    <string name="substraction_game_type_button">Вычитание</string>
+    <string name="multiply_game_type_button">Умножение</string>
+    <string name="division_game_type_button">Деление</string>
 </resources>
