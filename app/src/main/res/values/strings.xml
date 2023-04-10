@@ -13,4 +13,9 @@
     <string name="easy_game_type_button">Легкий</string>
     <string name="medium_game_type_button">Средний</string>
     <string name="hard_game_type_button">Продвинутый</string>
+    <string name="question_mark">\?</string>
+    <string name="progress">Прогресс</string>
+    <string name="restart">Заново</string>
+    <string name="stats">Статистика</string>
+    <string name="choose_level">Выбор уровня</string>
 </resources>
