@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="main_color">#B7C4CF</color>
+    <color name="easy_game_mode">#D3E4CD</color>
+    <color name="medium_game_mode">#99A799</color>
+    <color name="hard_game_mode">#698269</color>
+    <color name="light_beige_button">#F3F0D7</color>
+    <color name="dark_beige_button">#EEE3CB</color>
+    <color name="text_color">#483434</color>
+    <color name="dark_beige_text_color">#524A3B</color>
+    <color name="hard_game_mode_COLOR">#28241D</color>
+    <color name="secondary_dark_beige_button">#D7C0AE</color>
 </resources>
