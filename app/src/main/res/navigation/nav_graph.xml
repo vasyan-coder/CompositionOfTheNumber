@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startFrameFragment">
+
+    <fragment
+        android:id="@+id/startFrameFragment"
+        android:name="com.trpp.compositionofthenumber.presentation.StartFrameFragment"
+        android:label="StartFrameFragment"
+        tools:layout="@layout/fragment_start_frame">
+        <action
+            android:id="@+id/action_startFrameFragment_to_levelChooseFragment"
+            app:destination="@id/levelChooseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/levelChooseFragment"
+        android:name="com.trpp.compositionofthenumber.presentation.LevelChooseFragment"
+        android:label="LevelChooseFragment"
+        tools:layout="@layout/fragment_level_choose">
+        <action
+            android:id="@+id/action_levelChooseFragment_to_difficultyChooseFragment"
+            app:destination="@id/difficultyChooseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/difficultyChooseFragment"
+        android:name="com.trpp.compositionofthenumber.presentation.DifficultyChooseFragment"
+        android:label="DifficultyChooseFragment"
+        tools:layout="@layout/fragment_difficulty_choose">
+        <action
+            android:id="@+id/action_difficultyChooseFragment_to_gameProcessFragment"
+            app:destination="@id/gameProcessFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameProcessFragment"
+        android:name="com.trpp.compositionofthenumber.presentation.GameProcessFragment"
+        android:label="GameProcessFragment"
+        tools:layout="@layout/fragment_game_process">
+        <action
+            android:id="@+id/action_gameProcessFragment_to_gameResultFragment"
+            app:destination="@id/gameResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameResultFragment"
+        android:name="com.trpp.compositionofthenumber.presentation.GameResultFragment"
+        android:label="GameResultFragment"
+        tools:layout="@layout/fragment_game_result"/>
+</navigation>
