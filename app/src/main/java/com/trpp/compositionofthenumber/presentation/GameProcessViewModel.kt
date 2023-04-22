@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import com.trpp.compositionofthenumber.data.GameRepositoryImpl
 import com.trpp.compositionofthenumber.domain.entity.GameSettings
 import com.trpp.compositionofthenumber.domain.entity.Level
+import com.trpp.compositionofthenumber.domain.entity.Question
 import com.trpp.compositionofthenumber.domain.usecases.GenerateQuestionUseCase
 import com.trpp.compositionofthenumber.domain.usecases.GetGameSettingsUseCase
 
@@ -32,8 +33,14 @@ class GameProcessViewModel(
         private const val SECONDS_IN_MINUTES = 60
 
     }
+
+    private val _question = MutableLiveData<Question>()
+    val question: LiveData<Question>
+        get() = _question
+
     init {
         getGameSettings()
+        generateQuestion()
         startTimer()
     }
 
@@ -59,8 +66,17 @@ class GameProcessViewModel(
         }
         timer?.start()
     }
+
     private fun getGameSettings() {
         this.gameSettings = getGameSettingsUseCase(level)
         //_minPercent.value = gameSettings.minPercentOfRightAnswers
+    }
+
+    private fun generateQuestion() {
+        _question.value = generateQuestionUseCase(gameSettings.maxSumValue)
+    }
+    override fun onCleared() {
+        super.onCleared()
+        timer?.cancel()
     }
 }
