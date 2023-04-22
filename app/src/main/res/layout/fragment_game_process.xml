@@ -20,8 +20,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="164dp"
-        android:layout_height="164dp"
+        android:layout_width="133dp"
+        android:layout_height="133dp"
         android:layout_marginTop="24dp"
         android:foreground="@drawable/circul_border_game_elements"
         app:cardCornerRadius="10000dp"
@@ -38,15 +38,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/black"
-            android:textSize="64sp"
+            android:textSize="48sp"
             tools:text="5" />
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
-        android:layout_width="164dp"
-        android:layout_height="164dp"
+        android:layout_width="133dp"
+        android:layout_height="133dp"
         android:layout_marginTop="48dp"
         android:foreground="@drawable/rectangle_border_game_elements"
         app:cardElevation="0dp"
@@ -63,15 +63,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/black"
-            android:textSize="64sp"
+            android:textSize="48sp"
             tools:text="2" />
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="164dp"
-        android:layout_height="164dp"
+        android:layout_width="133dp"
+        android:layout_height="133dp"
         android:layout_marginTop="48dp"
         android:foreground="@drawable/rectangle_border_game_elements"
         app:cardElevation="0dp"
@@ -88,7 +88,7 @@
             android:layout_gravity="center"
             android:text="@string/question_mark"
             android:textColor="@color/black"
-            android:textSize="64sp" />
+            android:textSize="48sp" />
 
     </androidx.cardview.widget.CardView>
 
