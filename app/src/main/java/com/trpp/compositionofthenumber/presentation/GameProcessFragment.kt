@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.compositionofthenumber.R
 import com.example.compositionofthenumber.databinding.FragmentGameProcessBinding
+import com.trpp.compositionofthenumber.domain.entity.GameResult
 import com.trpp.compositionofthenumber.domain.entity.Level
 
 
@@ -88,7 +89,9 @@ class GameProcessFragment : Fragment() {
             binding.progressBar.progressTintList = ColorStateList.valueOf(color)
         }
         viewModel.gameResult.observe(viewLifecycleOwner) {
-            findNavController().navigate(GameProcessFragmentDirections.ActionGameProcessFragmentToGameResultFragment(it))
+            findNavController().navigate(
+                GameProcessFragmentDirections.actionGameProcessFragmentToGameResultFragment(it)
+            )
         }
     }
 }
