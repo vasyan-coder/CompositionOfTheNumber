@@ -18,4 +18,5 @@
     <string name="restart">Заново</string>
     <string name="stats">Статистика</string>
     <string name="choose_level">Выбор уровня</string>
+    <string name="progress_answers">Правильных ответов %s (минимум %s)</string>
 </resources>

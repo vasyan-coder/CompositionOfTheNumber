@@ -39,11 +39,17 @@
         tools:layout="@layout/fragment_game_process">
         <action
             android:id="@+id/action_gameProcessFragment_to_gameResultFragment"
-            app:destination="@id/gameResultFragment" />
+            app:destination="@id/gameResultFragment"
+            app:popUpTo="@id/gameProcessFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/gameResultFragment"
         android:name="com.trpp.compositionofthenumber.presentation.GameResultFragment"
         android:label="GameResultFragment"
-        tools:layout="@layout/fragment_game_result"/>
+        tools:layout="@layout/fragment_game_result">
+        <argument
+            android:name="gameResult"
+            app:argType="com.trpp.compositionofthenumber.domain.entity.GameResult" />
+    </fragment>
 </navigation>
