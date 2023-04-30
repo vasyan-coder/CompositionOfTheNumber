@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_color">
@@ -31,6 +32,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/main_text" />
 
+    <ImageView
+        android:id="@+id/back_for_start_frame"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/container_start_frame"
+        app:layout_constraintBottom_toBottomOf="@+id/main_text"
+        app:layout_constraintEnd_toEndOf="@+id/main_text"
+        app:layout_constraintStart_toStartOf="@+id/main_text"
+        app:layout_constraintTop_toTopOf="@+id/main_text" />
+
     <TextView
         android:id="@+id/main_text"
         android:layout_width="wrap_content"
@@ -47,6 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/start_game_button"
