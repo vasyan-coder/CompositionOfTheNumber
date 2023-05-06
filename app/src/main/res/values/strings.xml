@@ -19,4 +19,5 @@
     <string name="stats">Статистика</string>
     <string name="choose_level">Выбор уровня</string>
     <string name="progress_answers">Правильных ответов %s (минимум %s)</string>
+    <string name="current_score">Ваш счет: %s</string>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -24,10 +25,10 @@
         android:src="@drawable/stat_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageWinner" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textCurrentScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -35,7 +36,7 @@
         android:textColor="@color/text_color"
         android:textSize="24sp"
         app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintBottom_toTopOf="@+id/textHighScore"
         app:layout_constraintEnd_toStartOf="@+id/progressBar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imageView"
@@ -44,7 +45,7 @@
         tools:text="Ваш счет:" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageWinner"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:src="@drawable/win_sticker"
@@ -53,7 +54,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textHighScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -66,7 +67,7 @@
         app:layout_constraintEnd_toStartOf="@+id/progressBar"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textCurrentScore"
         tools:text="Рекорд:" />
 
     <ProgressBar
@@ -75,7 +76,6 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginEnd="24dp"
-        android:indeterminate="false"
         android:max="100"
         android:progress="40"
         android:progressDrawable="@drawable/restult_diagramm_shape"

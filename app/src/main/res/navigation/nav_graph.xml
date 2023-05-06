@@ -51,5 +51,15 @@
         <argument
             android:name="gameResult"
             app:argType="com.trpp.compositionofthenumber.domain.entity.GameResult" />
+        <action
+            android:id="@+id/action_gameResultFragment_to_levelChooseFragment"
+            app:destination="@id/levelChooseFragment"
+            app:popUpTo="@id/levelChooseFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_gameResultFragment_to_difficultyChooseFragment"
+            app:destination="@id/difficultyChooseFragment"
+            app:popUpTo="@id/difficultyChooseFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
