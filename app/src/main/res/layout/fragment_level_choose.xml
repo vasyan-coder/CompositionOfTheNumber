@@ -17,18 +17,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/back_for_text"
-        android:layout_width="@dimen/pic_width"
-        android:layout_height="@dimen/pic_height"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="150dp"
-        android:background="@color/main_color"
-        android:src="@drawable/back_for_text"
+        android:id="@+id/back_for_choose"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/container_choose_a_level"
         app:layout_constraintBottom_toBottomOf="@+id/game_type_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/game_type_title"
+        app:layout_constraintStart_toStartOf="@+id/game_type_title"
         app:layout_constraintTop_toTopOf="@+id/game_type_title" />
 
     <TextView

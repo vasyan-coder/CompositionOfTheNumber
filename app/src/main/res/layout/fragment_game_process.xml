@@ -10,7 +10,7 @@
         android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:textColor="@color/black"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,44 +18,32 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="00:00" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="164dp"
-        android:layout_height="164dp"
-        android:layout_marginTop="48dp"
-        android:foreground="@drawable/circul_border_game_elements"
-        app:cardCornerRadius="10000dp"
-        app:cardElevation="0dp"
-        app:cardPreventCornerOverlap="true"
-        app:contentPadding="32dp"
+    <TextView
+        android:id="@+id/textNumber"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:background="@drawable/circul_border_game_elements"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timer">
-
-        <TextView
-            android:id="@+id/textNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:textSize="64sp"
-            tools:text="5" />
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@+id/timer"
+        tools:text="5" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
-        android:layout_width="164dp"
-        android:layout_height="164dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="8dp"
         android:foreground="@drawable/rectangle_border_game_elements"
         app:cardElevation="0dp"
         app:cardPreventCornerOverlap="true"
         app:contentPadding="32dp"
+        app:layout_constrainedHeight="true"
         app:layout_constraintEnd_toStartOf="@+id/cardView2"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        app:layout_constraintTop_toBottomOf="@+id/textNumber">
 
         <TextView
             android:id="@+id/textFirstPartNum"
@@ -63,24 +51,24 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/black"
-            android:textSize="64sp"
+            android:textSize="48sp"
             tools:text="2" />
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="164dp"
-        android:layout_height="164dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="8dp"
+
         android:foreground="@drawable/rectangle_border_game_elements"
         app:cardElevation="0dp"
-        app:cardPreventCornerOverlap="true"
         app:contentPadding="32dp"
+        app:layout_constrainedHeight="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
-        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        app:layout_constraintTop_toBottomOf="@+id/textNumber">
 
         <TextView
             android:layout_width="wrap_content"
@@ -88,19 +76,22 @@
             android:layout_gravity="center"
             android:text="@string/question_mark"
             android:textColor="@color/black"
-            android:textSize="64sp" />
+            android:textSize="48sp" />
 
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/progressText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:text="@string/progress"
         android:textColor="@color/text_color"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/progress_bar"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -125,7 +116,6 @@
         android:padding="16dp"
         android:textColor="@color/black"
         android:textSize="48sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvOption5"
         app:layout_constraintHorizontal_bias="0.5"
@@ -142,7 +132,6 @@
         android:padding="16dp"
         android:textColor="@color/black"
         android:textSize="48sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvOption6"
         app:layout_constraintHorizontal_bias="0.5"
@@ -159,7 +148,6 @@
         android:padding="16dp"
         android:textColor="@color/black"
         android:textSize="48sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -176,7 +164,6 @@
         android:padding="16dp"
         android:textColor="@color/black"
         android:textSize="48sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvOption4"
         app:layout_constraintEnd_toStartOf="@+id/tvOption2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -193,7 +180,6 @@
         android:padding="16dp"
         android:textColor="@color/black"
         android:textSize="48sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvOption4"
         app:layout_constraintEnd_toStartOf="@+id/tvOption3"
         app:layout_constraintHorizontal_bias="0.5"
@@ -210,7 +196,6 @@
         android:padding="16dp"
         android:textColor="@color/black"
         android:textSize="48sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/tvOption4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
