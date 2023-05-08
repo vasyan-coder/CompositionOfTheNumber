@@ -1,4 +1,4 @@
-package com.trpp.compositionofthenumber.presentation
+package com.trpp.compositionofthenumber.presentation.fragments
 
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -9,10 +9,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.compositionofthenumber.R
 import com.example.compositionofthenumber.databinding.FragmentGameProcessBinding
-import com.trpp.compositionofthenumber.domain.entity.GameResult
 import com.trpp.compositionofthenumber.domain.entity.Level
+import com.trpp.compositionofthenumber.presentation.viewmodels.GameProcessViewModel
+import com.trpp.compositionofthenumber.presentation.viewmodels.GameViewModelFactory
 
 
 class GameProcessFragment : Fragment() {
@@ -90,7 +90,9 @@ class GameProcessFragment : Fragment() {
         }
         viewModel.gameResult.observe(viewLifecycleOwner) {
             findNavController().navigate(
-                GameProcessFragmentDirections.actionGameProcessFragmentToGameResultFragment(it)
+                GameProcessFragmentDirections.actionGameProcessFragmentToGameResultFragment(
+                    it
+                )
             )
         }
     }

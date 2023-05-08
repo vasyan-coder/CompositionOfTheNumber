@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/startFrameFragment"
-        android:name="com.trpp.compositionofthenumber.presentation.StartFrameFragment"
+        android:name="com.trpp.compositionofthenumber.presentation.fragments.StartFrameFragment"
         android:label="StartFrameFragment"
         tools:layout="@layout/fragment_start_frame">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/levelChooseFragment"
-        android:name="com.trpp.compositionofthenumber.presentation.LevelChooseFragment"
+        android:name="com.trpp.compositionofthenumber.presentation.fragments.LevelChooseFragment"
         android:label="LevelChooseFragment"
         tools:layout="@layout/fragment_level_choose">
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/difficultyChooseFragment"
-        android:name="com.trpp.compositionofthenumber.presentation.DifficultyChooseFragment"
+        android:name="com.trpp.compositionofthenumber.presentation.fragments.DifficultyChooseFragment"
         android:label="DifficultyChooseFragment"
         tools:layout="@layout/fragment_difficulty_choose">
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameProcessFragment"
-        android:name="com.trpp.compositionofthenumber.presentation.GameProcessFragment"
+        android:name="com.trpp.compositionofthenumber.presentation.fragments.GameProcessFragment"
         android:label="GameProcessFragment"
         tools:layout="@layout/fragment_game_process">
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/gameResultFragment"
-        android:name="com.trpp.compositionofthenumber.presentation.GameResultFragment"
+        android:name="com.trpp.compositionofthenumber.presentation.fragments.GameResultFragment"
         android:label="GameResultFragment"
         tools:layout="@layout/fragment_game_result">
         <argument
