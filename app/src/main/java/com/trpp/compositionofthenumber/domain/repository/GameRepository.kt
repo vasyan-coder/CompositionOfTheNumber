@@ -18,4 +18,9 @@ interface GameRepository {
         maxSumValue: Int,
         countOfOptions: Int
     ): Question
+
+    fun generateMulQuestion(
+        maxSumValue: Int,
+        countOfOptions: Int
+    ): Question
 }

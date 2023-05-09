@@ -41,6 +41,14 @@ class LevelChooseFragment : Fragment() {
             )
         }
 
+        binding.multiplyGameButton.setOnClickListener {
+            findNavController().navigate(
+                LevelChooseFragmentDirections.actionLevelChooseFragmentToDifficultyChooseFragment(
+                    Type.MUL
+                )
+            )
+        }
+
     }
 
 }
