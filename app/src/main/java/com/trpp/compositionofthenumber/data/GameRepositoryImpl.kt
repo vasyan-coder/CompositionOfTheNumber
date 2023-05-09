@@ -3,6 +3,7 @@ package com.trpp.compositionofthenumber.data
 import com.trpp.compositionofthenumber.domain.entity.GameSettings
 import com.trpp.compositionofthenumber.domain.entity.Level
 import com.trpp.compositionofthenumber.domain.entity.Question
+import com.trpp.compositionofthenumber.domain.entity.Type
 import com.trpp.compositionofthenumber.domain.repository.GameRepository
 import kotlin.math.max
 import kotlin.math.min
@@ -34,7 +35,9 @@ object GameRepositoryImpl : GameRepository {
                     10,
                     3,
                     50,
-                    8
+                    8,
+                    Level.TEST, // временно
+                    Type.ADD
                 )
             }
             Level.EASY -> {
@@ -42,7 +45,9 @@ object GameRepositoryImpl : GameRepository {
                     10,
                     10,
                     70,
-                    60
+                    60,
+                    Level.EASY, // временно
+                    Type.ADD
                 )
             }
             Level.NORMAL -> {
@@ -50,7 +55,9 @@ object GameRepositoryImpl : GameRepository {
                     20,
                     20,
                     80,
-                    40
+                    40,
+                    Level.NORMAL, // временно
+                    Type.ADD
                 )
             }
             Level.HARD -> {
@@ -58,7 +65,9 @@ object GameRepositoryImpl : GameRepository {
                     30,
                     30,
                     90,
-                    40
+                    40,
+                    Level.HARD, // временно
+                    Type.ADD
                 )
             }
         }
