@@ -9,6 +9,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.example.compositionofthenumber.R
 import com.example.compositionofthenumber.databinding.FragmentGameProcessBinding
 import com.trpp.compositionofthenumber.domain.entity.Level
 import com.trpp.compositionofthenumber.presentation.viewmodels.GameProcessViewModel
@@ -16,9 +18,12 @@ import com.trpp.compositionofthenumber.presentation.viewmodels.GameViewModelFact
 
 
 class GameProcessFragment : Fragment() {
+
+    private val args by navArgs<GameProcessFragmentArgs>()
+
     private lateinit var binding: FragmentGameProcessBinding
     private val viewModelFactory by lazy {
-        GameViewModelFactory(Level.EASY, requireActivity().application)
+        GameViewModelFactory(args.gameSettings.gameLevel, requireActivity().application)
     }
 
     private val viewModel by lazy {
@@ -33,21 +38,39 @@ class GameProcessFragment : Fragment() {
         binding = FragmentGameProcessBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     private fun getColorByState(goodState: Boolean): Int {
         val coloResId = if (goodState) {
-            android.R.color.holo_green_light
+            when (args.gameSettings.gameLevel) {
+                Level.EASY -> R.color.text_color
+                Level.NORMAL -> R.color.text_color
+                Level.HARD -> R.color.white
+                else -> {
+                    throw RuntimeException("Not expected difficulty: ${args.gameSettings.gameLevel}")
+                }
+            }
         } else {
-            android.R.color.holo_red_dark
+            when (args.gameSettings.gameLevel) {
+                Level.EASY -> R.color.text_color
+                Level.NORMAL -> R.color.text_color
+                Level.HARD -> R.color.white
+                else -> {
+                    throw RuntimeException("Not expected difficulty: ${args.gameSettings.gameLevel}")
+                }
+            }
         }
         return ContextCompat.getColor(requireContext(), coloResId)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.formattedTime.observe(viewLifecycleOwner){
+
+        setColorScheme()
+
+        viewModel.formattedTime.observe(viewLifecycleOwner) {
             binding.timer.text = it.toString()
         }
-        viewModel.question.observe(viewLifecycleOwner){
+        viewModel.question.observe(viewLifecycleOwner) {
             binding.textNumber.text = it.sum.toString()
             binding.textFirstPartNum.text = it.visibleNumber.toString()
             binding.tvOption1.text = it.options[0].toString()
@@ -94,6 +117,65 @@ class GameProcessFragment : Fragment() {
                     it
                 )
             )
+        }
+    }
+
+    private fun setColorScheme() {
+        when (args.gameSettings.gameLevel) {
+            Level.EASY -> {
+                binding.background
+                    .setBackgroundColor(requireContext().getColor(R.color.easy_game_mode))
+                binding.tvOption1.background.setTint(requireContext().getColor(R.color.white))
+                binding.tvOption2.background.setTint(requireContext().getColor(R.color.white))
+                binding.tvOption3.background.setTint(requireContext().getColor(R.color.white))
+                binding.tvOption4.background.setTint(requireContext().getColor(R.color.white))
+                binding.tvOption5.background.setTint(requireContext().getColor(R.color.white))
+                binding.tvOption6.background.setTint(requireContext().getColor(R.color.white))
+
+                binding.textNumber.setBackgroundResource(R.drawable.circul_border_game_elements_easy)
+                binding.textFirstPartNum.background.setTint(requireContext().getColor(R.color.white))
+                binding.unknownNum.background.setTint(requireContext().getColor(R.color.white))
+
+                binding.timer.setTextColor(requireContext().getColor(R.color.text_color))
+            }
+
+            Level.NORMAL -> {
+                binding.background
+                    .setBackgroundColor(requireContext().getColor(R.color.medium_game_mode))
+                binding.tvOption1.background.setTint(requireContext().getColor(R.color.dark_beige_button))
+                binding.tvOption2.background.setTint(requireContext().getColor(R.color.light_beige_button))
+                binding.tvOption3.background.setTint(requireContext().getColor(R.color.dark_beige_button))
+                binding.tvOption4.background.setTint(requireContext().getColor(R.color.light_beige_button))
+                binding.tvOption5.background.setTint(requireContext().getColor(R.color.dark_beige_button))
+                binding.tvOption6.background.setTint(requireContext().getColor(R.color.light_beige_button))
+
+                binding.textNumber.setBackgroundResource(R.drawable.circul_border_game_elements_medium)
+                binding.textFirstPartNum.background.setTint(requireContext().getColor(R.color.white))
+                binding.unknownNum.background.setTint(requireContext().getColor(R.color.white))
+
+                binding.timer.setTextColor(requireContext().getColor(R.color.text_color))
+            }
+
+            Level.HARD -> {
+                binding.background
+                    .setBackgroundColor(requireContext().getColor(R.color.hard_game_mode))
+                binding.tvOption1.background.setTint(requireContext().getColor(R.color.dark_beige_button))
+                binding.tvOption2.background.setTint(requireContext().getColor(R.color.dark_beige_button))
+                binding.tvOption3.background.setTint(requireContext().getColor(R.color.dark_beige_button))
+                binding.tvOption4.background.setTint(requireContext().getColor(R.color.dark_beige_button))
+                binding.tvOption5.background.setTint(requireContext().getColor(R.color.dark_beige_button))
+                binding.tvOption6.background.setTint(requireContext().getColor(R.color.dark_beige_button))
+
+                binding.textNumber.setBackgroundResource(R.drawable.circul_border_game_elements_hard)
+                binding.textFirstPartNum.background.setTint(requireContext().getColor(R.color.light_beige_button))
+                binding.unknownNum.background.setTint(requireContext().getColor(R.color.light_beige_button))
+
+                binding.timer.setTextColor(requireContext().getColor(R.color.light_beige_button))
+            }
+
+            else -> {
+                throw RuntimeException("Not expected difficulty: ${args.gameSettings.gameLevel}")
+            }
         }
     }
 }

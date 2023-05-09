@@ -9,4 +9,6 @@ class GameSettings (
     val minCountOfRightAnswers: Int,
     val minPercentOfRightAnswers: Int,
     val gameTimeInSeconds: Int,
+    val gameLevel: Level,
+    val gameType: Type
 ):Parcelable
