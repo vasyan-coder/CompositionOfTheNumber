@@ -28,7 +28,21 @@ object GameRepositoryImpl : GameRepository {
         return Question(sum, visibleNumber, options.toList())
     }
 
-    override fun getGameSettings(level: Level): GameSettings {
+    override fun generateSubQuestion(maxSumValue: Int, countOfOptions: Int): Question {
+        val sum = Random.nextInt(MIN_SUM_VALUE, maxSumValue + 1)
+        val visibleNumber = Random.nextInt(MIN_ANSWER_VALUE, sum)
+        val options = HashSet<Int>()
+        val rightAnswer = sum + visibleNumber
+        options.add(rightAnswer)
+        val from = MIN_ANSWER_VALUE
+        val to = min(maxSumValue - 1, rightAnswer + countOfOptions)
+        while (options.size < countOfOptions) {
+            options.add(Random.nextInt(from, to))
+        }
+        return Question(sum, visibleNumber, options.toList())
+    }
+
+    override fun getGameSettings(level: Level, type: Type): GameSettings {
         return when (level) {
             Level.TEST -> {
                 GameSettings(
@@ -37,7 +51,7 @@ object GameRepositoryImpl : GameRepository {
                     50,
                     8,
                     Level.TEST, // временно
-                    Type.ADD
+                    type
                 )
             }
             Level.EASY -> {
@@ -47,7 +61,7 @@ object GameRepositoryImpl : GameRepository {
                     70,
                     60,
                     Level.EASY, // временно
-                    Type.ADD
+                    type
                 )
             }
             Level.NORMAL -> {
@@ -57,7 +71,7 @@ object GameRepositoryImpl : GameRepository {
                     80,
                     40,
                     Level.NORMAL, // временно
-                    Type.ADD
+                    type
                 )
             }
             Level.HARD -> {
@@ -67,7 +81,7 @@ object GameRepositoryImpl : GameRepository {
                     90,
                     40,
                     Level.HARD, // временно
-                    Type.ADD
+                    type
                 )
             }
         }
