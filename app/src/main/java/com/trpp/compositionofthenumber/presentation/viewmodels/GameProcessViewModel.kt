@@ -11,19 +11,24 @@ import com.trpp.compositionofthenumber.domain.entity.GameResult
 import com.trpp.compositionofthenumber.domain.entity.GameSettings
 import com.trpp.compositionofthenumber.domain.entity.Level
 import com.trpp.compositionofthenumber.domain.entity.Question
+import com.trpp.compositionofthenumber.domain.entity.Type
 import com.trpp.compositionofthenumber.domain.usecases.GenerateQuestionUseCase
+import com.trpp.compositionofthenumber.domain.usecases.GenerateSubQuestionUseCase
 import com.trpp.compositionofthenumber.domain.usecases.GetGameSettingsUseCase
 
 
 class GameProcessViewModel(
     private val context: Application,
-    private val level: Level
+    private val level: Level,
+    private val type: Type
 ) : ViewModel() {
     private lateinit var gameSettings: GameSettings
     private val repository = GameRepositoryImpl
 
     private val generateQuestionUseCase = GenerateQuestionUseCase(repository)
+    private val generateSubQuestionUseCase = GenerateSubQuestionUseCase(repository)
     private val getGameSettingsUseCase = GetGameSettingsUseCase(repository)
+
     private val _formattedTime = MutableLiveData<String>()
     private var countOfRightAnswers = 0
     private var countOfQuestions = 0
@@ -102,12 +107,19 @@ class GameProcessViewModel(
     }
 
     private fun getGameSettings() {
-        this.gameSettings = getGameSettingsUseCase(level)
+        this.gameSettings = getGameSettingsUseCase(level, type)
         //_minPercent.value = gameSettings.minPercentOfRightAnswers
     }
 
     private fun generateQuestion() {
-        _question.value = generateQuestionUseCase(gameSettings.maxSumValue)
+        when (type) {
+            Type.ADD -> _question.value = generateQuestionUseCase(gameSettings.maxSumValue)
+            Type.SUB -> _question.value = generateSubQuestionUseCase(gameSettings.maxSumValue)
+            else -> {
+                throw RuntimeException("Unknown game type: $type")
+            }
+        }
+
     }
 
     override fun onCleared() {
@@ -135,7 +147,13 @@ class GameProcessViewModel(
     }
 
     private fun checkAnswer(number: Int) {
-        val rightAnswer = question.value?.rightAnswer
+        val rightAnswer = when (type) {
+            Type.ADD -> question.value!!.sum - question.value!!.visibleNumber
+            Type.SUB -> question.value!!.sum + question.value!!.visibleNumber
+            else -> {
+                throw RuntimeException("Unknown game type: $type")
+            }
+        }
         if (number == rightAnswer) {
             countOfRightAnswers++
         }

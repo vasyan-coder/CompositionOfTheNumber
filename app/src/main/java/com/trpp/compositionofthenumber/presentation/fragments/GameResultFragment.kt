@@ -30,7 +30,9 @@ class GameResultFragment : Fragment() {
 
         binding.restartButton.setOnClickListener {
             findNavController().navigate(
-                GameResultFragmentDirections.actionGameResultFragmentToDifficultyChooseFragment()
+                GameResultFragmentDirections.actionGameResultFragmentToDifficultyChooseFragment(
+                    args.gameResult.gameSettings.gameType
+                )
             )
         }
         binding.chooseLevelButton.setOnClickListener {

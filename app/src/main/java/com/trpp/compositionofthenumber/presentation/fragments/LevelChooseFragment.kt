@@ -8,8 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.compositionofthenumber.R
 import com.example.compositionofthenumber.databinding.FragmentLevelChooseBinding
+import com.trpp.compositionofthenumber.domain.entity.Type
 
-class LevelChooseFragment: Fragment() {
+class LevelChooseFragment : Fragment() {
 
     private lateinit var binding: FragmentLevelChooseBinding
 
@@ -25,7 +26,19 @@ class LevelChooseFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.summGameButton.setOnClickListener {
-            findNavController().navigate(R.id.action_levelChooseFragment_to_difficultyChooseFragment)
+            findNavController().navigate(
+                LevelChooseFragmentDirections.actionLevelChooseFragmentToDifficultyChooseFragment(
+                    Type.ADD
+                )
+            )
+        }
+
+        binding.substractionGameButton.setOnClickListener {
+            findNavController().navigate(
+                LevelChooseFragmentDirections.actionLevelChooseFragmentToDifficultyChooseFragment(
+                    Type.SUB
+                )
+            )
         }
 
     }
