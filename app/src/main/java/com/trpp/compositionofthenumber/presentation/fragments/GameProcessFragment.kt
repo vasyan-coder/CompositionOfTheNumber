@@ -23,7 +23,11 @@ class GameProcessFragment : Fragment() {
 
     private lateinit var binding: FragmentGameProcessBinding
     private val viewModelFactory by lazy {
-        GameViewModelFactory(args.gameSettings.gameLevel, requireActivity().application)
+        GameViewModelFactory(
+            args.gameSettings.gameLevel,
+            requireActivity().application,
+            args.gameSettings.gameType
+        )
     }
 
     private val viewModel by lazy {

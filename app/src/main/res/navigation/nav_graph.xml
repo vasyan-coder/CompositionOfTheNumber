@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_difficultyChooseFragment_to_gameProcessFragment"
             app:destination="@id/gameProcessFragment" />
+        <argument
+            android:name="gameType"
+            app:argType="com.trpp.compositionofthenumber.domain.entity.Type" />
     </fragment>
     <fragment
         android:id="@+id/gameProcessFragment"
