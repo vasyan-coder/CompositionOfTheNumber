@@ -42,6 +42,9 @@
             app:destination="@id/gameResultFragment"
             app:popUpTo="@id/gameProcessFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="gameSettings"
+            app:argType="com.trpp.compositionofthenumber.domain.entity.GameSettings" />
     </fragment>
     <fragment
         android:id="@+id/gameResultFragment"
