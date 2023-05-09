@@ -90,7 +90,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:max="100"
-        android:progressBackgroundTint="@color/easy_game_mode"
+        android:progressBackgroundTint="@color/secondary_dark_beige_button"
         android:progressTint="@color/text_color"
         app:layout_constraintBottom_toTopOf="@+id/tvOption2"
         app:layout_constraintEnd_toEndOf="parent"

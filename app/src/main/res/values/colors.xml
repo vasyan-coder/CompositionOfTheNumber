@@ -18,4 +18,5 @@
     <color name="dark_beige_text_color">#524A3B</color>
     <color name="hard_game_mode_COLOR">#28241D</color>
     <color name="secondary_dark_beige_button">#D7C0AE</color>
+    <color name="silver">#c4c4c4</color>
 </resources>
