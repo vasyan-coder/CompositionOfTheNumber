@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/easy_game_mode">
@@ -22,63 +23,53 @@
         android:id="@+id/textNumber"
         android:layout_width="128dp"
         android:layout_height="128dp"
-        android:background="@drawable/circul_border_game_elements"
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timer"
+        tools:background="@drawable/circul_border_game_elements_easy"
         tools:text="5" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
+    <TextView
+        android:id="@+id/textFirstPartNum"
         android:layout_width="128dp"
         android:layout_height="128dp"
+        android:layout_gravity="center"
         android:layout_marginTop="8dp"
+        android:background="@color/white"
         android:foreground="@drawable/rectangle_border_game_elements"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="48sp"
         app:cardElevation="0dp"
         app:cardPreventCornerOverlap="true"
         app:contentPadding="32dp"
         app:layout_constrainedHeight="true"
-        app:layout_constraintEnd_toStartOf="@+id/cardView2"
+        app:layout_constraintEnd_toStartOf="@+id/unknownNum"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textNumber">
+        app:layout_constraintTop_toBottomOf="@+id/textNumber"
+        tools:text="2" />
 
-        <TextView
-            android:id="@+id/textFirstPartNum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:textSize="48sp"
-            tools:text="2" />
 
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+    <TextView
+        android:id="@+id/unknownNum"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_marginTop="8dp"
-
+        android:background="@color/white"
         android:foreground="@drawable/rectangle_border_game_elements"
+        android:gravity="center"
+        android:text="@string/question_mark"
+        android:textColor="@color/black"
+        android:textSize="48sp"
         app:cardElevation="0dp"
         app:contentPadding="32dp"
         app:layout_constrainedHeight="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardView3"
-        app:layout_constraintTop_toBottomOf="@+id/textNumber">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/question_mark"
-            android:textColor="@color/black"
-            android:textSize="48sp" />
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintStart_toEndOf="@+id/textFirstPartNum"
+        app:layout_constraintTop_toBottomOf="@+id/textNumber" />
 
     <TextView
         android:id="@+id/progressText"
@@ -90,7 +81,7 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/progress_bar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3"
+        app:layout_constraintTop_toBottomOf="@+id/textFirstPartNum"
         app:layout_constraintVertical_bias="1.0" />
 
     <ProgressBar
