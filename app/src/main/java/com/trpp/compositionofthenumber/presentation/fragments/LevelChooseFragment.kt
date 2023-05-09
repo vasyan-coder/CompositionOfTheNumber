@@ -48,6 +48,13 @@ class LevelChooseFragment : Fragment() {
                 )
             )
         }
+        binding.divisionGameButton.setOnClickListener {
+            findNavController().navigate(
+                LevelChooseFragmentDirections.actionLevelChooseFragmentToDifficultyChooseFragment(
+                    Type.DIV
+                )
+            )
+        }
 
     }
 
