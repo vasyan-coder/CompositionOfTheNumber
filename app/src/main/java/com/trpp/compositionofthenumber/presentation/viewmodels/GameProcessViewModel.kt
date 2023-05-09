@@ -12,6 +12,7 @@ import com.trpp.compositionofthenumber.domain.entity.GameSettings
 import com.trpp.compositionofthenumber.domain.entity.Level
 import com.trpp.compositionofthenumber.domain.entity.Question
 import com.trpp.compositionofthenumber.domain.entity.Type
+import com.trpp.compositionofthenumber.domain.usecases.GenerateMulQuestionUseCase
 import com.trpp.compositionofthenumber.domain.usecases.GenerateQuestionUseCase
 import com.trpp.compositionofthenumber.domain.usecases.GenerateSubQuestionUseCase
 import com.trpp.compositionofthenumber.domain.usecases.GetGameSettingsUseCase
@@ -27,6 +28,7 @@ class GameProcessViewModel(
 
     private val generateQuestionUseCase = GenerateQuestionUseCase(repository)
     private val generateSubQuestionUseCase = GenerateSubQuestionUseCase(repository)
+    private val generateMulQuestionUseCase = GenerateMulQuestionUseCase(repository)
     private val getGameSettingsUseCase = GetGameSettingsUseCase(repository)
 
     private val _formattedTime = MutableLiveData<String>()
@@ -115,6 +117,7 @@ class GameProcessViewModel(
         when (type) {
             Type.ADD -> _question.value = generateQuestionUseCase(gameSettings.maxSumValue)
             Type.SUB -> _question.value = generateSubQuestionUseCase(gameSettings.maxSumValue)
+            Type.MUL -> _question.value = generateMulQuestionUseCase(gameSettings.maxSumValue)
             else -> {
                 throw RuntimeException("Unknown game type: $type")
             }
@@ -150,6 +153,7 @@ class GameProcessViewModel(
         val rightAnswer = when (type) {
             Type.ADD -> question.value!!.sum - question.value!!.visibleNumber
             Type.SUB -> question.value!!.sum + question.value!!.visibleNumber
+            Type.MUL -> question.value!!.sum / question.value!!.visibleNumber
             else -> {
                 throw RuntimeException("Unknown game type: $type")
             }

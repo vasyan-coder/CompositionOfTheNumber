@@ -14,6 +14,8 @@ object GameRepositoryImpl : GameRepository {
     private const val MIN_SUM_VALUE = 2
     private const val MIN_ANSWER_VALUE = 1
 
+    private const val MAX_COEF_VALUE = 6
+
     override fun generateQuestion(maxSumValue: Int, countOfOptions: Int): Question {
         val sum = Random.nextInt(MIN_SUM_VALUE, maxSumValue + 1)
         val visibleNumber = Random.nextInt(MIN_ANSWER_VALUE, sum)
@@ -42,6 +44,20 @@ object GameRepositoryImpl : GameRepository {
         return Question(sum, visibleNumber, options.toList())
     }
 
+    override fun generateMulQuestion(maxSumValue: Int, countOfOptions: Int): Question {
+        val visibleNumber = Random.nextInt(MIN_ANSWER_VALUE, maxSumValue)
+        val sum = visibleNumber * Random.nextInt(MIN_SUM_VALUE, MAX_COEF_VALUE)
+        val options = HashSet<Int>()
+        val rightAnswer = sum / visibleNumber
+        options.add(rightAnswer)
+        val from = max(rightAnswer - countOfOptions, MIN_ANSWER_VALUE)
+        val to = min(maxSumValue - 1, rightAnswer + countOfOptions)
+        while (options.size < countOfOptions) {
+            options.add(Random.nextInt(from, to))
+        }
+        return Question(sum, visibleNumber, options.toList())
+    }
+
     override fun getGameSettings(level: Level, type: Type): GameSettings {
         return when (level) {
             Level.TEST -> {
@@ -50,37 +66,40 @@ object GameRepositoryImpl : GameRepository {
                     3,
                     50,
                     8,
-                    Level.TEST, // временно
+                    Level.TEST,
                     type
                 )
             }
+
             Level.EASY -> {
                 GameSettings(
                     10,
                     10,
                     70,
                     60,
-                    Level.EASY, // временно
+                    Level.EASY,
                     type
                 )
             }
+
             Level.NORMAL -> {
                 GameSettings(
                     20,
                     20,
                     80,
                     40,
-                    Level.NORMAL, // временно
+                    Level.NORMAL,
                     type
                 )
             }
+
             Level.HARD -> {
                 GameSettings(
                     30,
                     30,
                     90,
                     40,
-                    Level.HARD, // временно
+                    Level.HARD,
                     type
                 )
             }
