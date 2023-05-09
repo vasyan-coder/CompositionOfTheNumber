@@ -48,10 +48,11 @@ class GameResultFragment : Fragment() {
             binding.imageWinner.setImageResource(R.drawable.win_sova)
         }
 
-
-
-        val progressPercent: Int =
-            args.gameResult.countOfRightAnswers * 100 / args.gameResult.countOfQuestions
+        var progressPercent = 0
+        if (args.gameResult.countOfQuestions != 0) {
+            progressPercent =
+                args.gameResult.countOfRightAnswers * 100 / args.gameResult.countOfQuestions
+        }
         binding.progressBar.animateProgress(progressPercent)
     }
 }
