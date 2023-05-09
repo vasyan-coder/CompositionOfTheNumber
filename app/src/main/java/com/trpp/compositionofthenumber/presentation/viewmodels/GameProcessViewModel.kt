@@ -1,4 +1,4 @@
-package com.trpp.compositionofthenumber.presentation
+package com.trpp.compositionofthenumber.presentation.viewmodels
 
 import android.app.Application
 import android.os.CountDownTimer

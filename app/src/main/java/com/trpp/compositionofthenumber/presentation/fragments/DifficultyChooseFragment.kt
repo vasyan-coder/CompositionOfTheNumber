@@ -1,4 +1,4 @@
-package com.trpp.compositionofthenumber.presentation
+package com.trpp.compositionofthenumber.presentation.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
