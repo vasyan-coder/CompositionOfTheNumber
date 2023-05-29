@@ -23,4 +23,9 @@ interface GameRepository {
         maxSumValue: Int,
         countOfOptions: Int
     ): Question
+
+    fun generateDivQuestion(
+        maxSumValue: Int,
+        countOfOptions: Int
+    ): Question
 }

@@ -5,6 +5,7 @@ import com.trpp.compositionofthenumber.domain.entity.Level
 import com.trpp.compositionofthenumber.domain.entity.Question
 import com.trpp.compositionofthenumber.domain.entity.Type
 import com.trpp.compositionofthenumber.domain.repository.GameRepository
+import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
@@ -15,6 +16,7 @@ object GameRepositoryImpl : GameRepository {
     private const val MIN_ANSWER_VALUE = 1
 
     private const val MAX_COEF_VALUE = 6
+    private const val MIN_COEF_VALUE = 3
 
     override fun generateQuestion(maxSumValue: Int, countOfOptions: Int): Question {
         val sum = Random.nextInt(MIN_SUM_VALUE, maxSumValue + 1)
@@ -22,10 +24,8 @@ object GameRepositoryImpl : GameRepository {
         val options = HashSet<Int>()
         val rightAnswer = sum - visibleNumber
         options.add(rightAnswer)
-        val from = max(rightAnswer - countOfOptions, MIN_ANSWER_VALUE)
-        val to = min(maxSumValue - 1, rightAnswer + countOfOptions)
         while (options.size < countOfOptions) {
-            options.add(Random.nextInt(from, to))
+            options.add(Random.nextInt(MIN_ANSWER_VALUE, maxSumValue))
         }
         return Question(sum, visibleNumber, options.toList())
     }
@@ -36,26 +36,41 @@ object GameRepositoryImpl : GameRepository {
         val options = HashSet<Int>()
         val rightAnswer = sum + visibleNumber
         options.add(rightAnswer)
-        val from = MIN_ANSWER_VALUE
-        val to = min(maxSumValue - 1, rightAnswer + countOfOptions)
         while (options.size < countOfOptions) {
-            options.add(Random.nextInt(from, to))
+            options.add(Random.nextInt(MIN_ANSWER_VALUE, maxSumValue))
         }
         return Question(sum, visibleNumber, options.toList())
     }
 
     override fun generateMulQuestion(maxSumValue: Int, countOfOptions: Int): Question {
-        val visibleNumber = Random.nextInt(MIN_ANSWER_VALUE, maxSumValue)
+        val visibleNumber = Random.nextInt(MIN_ANSWER_VALUE, maxSumValue + 1)
         val sum = visibleNumber * Random.nextInt(MIN_SUM_VALUE, MAX_COEF_VALUE)
         val options = HashSet<Int>()
         val rightAnswer = sum / visibleNumber
         options.add(rightAnswer)
-        val from = max(rightAnswer - countOfOptions, MIN_ANSWER_VALUE)
-        val to = min(maxSumValue - 1, rightAnswer + countOfOptions)
         while (options.size < countOfOptions) {
-            options.add(Random.nextInt(from, to))
+            options.add(Random.nextInt(MIN_ANSWER_VALUE, maxSumValue))
         }
         return Question(sum, visibleNumber, options.toList())
+    }
+
+    override fun generateDivQuestion(maxSumValue: Int, countOfOptions: Int): Question {
+        val visibleNumber = Random.nextInt(MIN_ANSWER_VALUE, maxSumValue / 2)
+//        val sum = visibleNumber * Random.nextInt(MIN_SUM_VALUE, MIN_COEF_VALUE)
+        val sum = visibleNumber * 2
+        val options = HashSet<Int>()
+        val rightAnswer = sum * visibleNumber
+        options.add(rightAnswer)
+        while (options.size < countOfOptions) {
+            val a = if (rightAnswer <= 5) {
+                Random.nextInt(1, rightAnswer + 5)
+            } else {
+                Random.nextInt(1, rightAnswer)
+            }
+            options.add(a)
+        }
+        // swap sum and visibleNumber
+        return Question(visibleNumber, sum, options.toList())
     }
 
     override fun getGameSettings(level: Level, type: Type): GameSettings {
