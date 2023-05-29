@@ -108,18 +108,6 @@
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/start_game_button">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingVertical="24dp"
-            android:paddingStart="16dp"
-            android:text="@string/stats_button"
-            android:textColor="@color/dark_beige_text_color">
-
-        </TextView>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@+id/start_game_button"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
