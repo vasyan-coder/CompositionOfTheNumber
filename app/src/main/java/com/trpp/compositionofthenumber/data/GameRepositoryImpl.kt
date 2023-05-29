@@ -5,6 +5,7 @@ import com.trpp.compositionofthenumber.domain.entity.Level
 import com.trpp.compositionofthenumber.domain.entity.Question
 import com.trpp.compositionofthenumber.domain.entity.Type
 import com.trpp.compositionofthenumber.domain.repository.GameRepository
+import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
@@ -55,12 +56,18 @@ object GameRepositoryImpl : GameRepository {
 
     override fun generateDivQuestion(maxSumValue: Int, countOfOptions: Int): Question {
         val visibleNumber = Random.nextInt(MIN_ANSWER_VALUE, maxSumValue / 2)
-        val sum = visibleNumber * Random.nextInt(MIN_SUM_VALUE, MIN_COEF_VALUE)
+//        val sum = visibleNumber * Random.nextInt(MIN_SUM_VALUE, MIN_COEF_VALUE)
+        val sum = visibleNumber * 2
         val options = HashSet<Int>()
         val rightAnswer = sum * visibleNumber
         options.add(rightAnswer)
         while (options.size < countOfOptions) {
-            options.add(Random.nextInt(1, maxSumValue))
+            val a = if (rightAnswer <= 5) {
+                Random.nextInt(1, rightAnswer + 5)
+            } else {
+                Random.nextInt(1, rightAnswer)
+            }
+            options.add(a)
         }
         // swap sum and visibleNumber
         return Question(visibleNumber, sum, options.toList())
